@@ -1,0 +1,251 @@
+.planner-shell {
+  max-width: 100%;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  padding: 0;
+}
+
+.planner-panel {
+  background: rgba(14, 28, 39, 0.96);
+  border: none;
+  border-radius: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.planner-header {
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.planner-header h1 {
+  margin: 0;
+  font-size: 1.12rem;
+}
+
+.planner-header a {
+  color: #a8caff;
+  text-decoration: none;
+}
+
+.planner-intro {
+  margin: 6px 0 0;
+  color: #a8b2c7;
+  font-size: 0.95rem;
+}
+
+.planner-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: calc(100vh - 80px);
+}
+
+.planner-map {
+  position: relative;
+  background: #08121f;
+  min-height: 100%;
+}
+
+#plannerMap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.mission-sidebar {
+  padding: 18px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: auto;
+  max-height: calc(100vh - 80px);
+}
+
+.mission-block {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.mission-block h2 {
+  margin: 0 0 10px;
+  font-size: 1rem;
+  color: #e2e8f0;
+}
+
+.mission-list {
+  display: grid;
+  gap: 12px;
+}
+
+.mission-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  align-items: center;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mission-item span {
+  color: #e2e8f0;
+  font-size: 0.95rem;
+}
+
+.mission-item button {
+  border: none;
+  background: rgba(45, 107, 255, 0.18);
+  color: #ffffff;
+  border-radius: 12px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.mission-item button:hover {
+  background: rgba(45, 107, 255, 0.28);
+}
+
+.mission-item.dragging {
+  opacity: 0.5;
+}
+
+.mission-item.drag-over {
+  border-color: #1fb4ff;
+  background: rgba(31, 180, 255, 0.08);
+}
+
+.mission-actions {
+  display: grid;
+  gap: 12px;
+}
+
+.mission-actions button {
+  width: 100%;
+  min-height: 48px;
+  border: none;
+  border-radius: 14px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #2d6bff, #1fb4ff);
+  cursor: pointer;
+}
+
+.mission-block label {
+  display: grid;
+  gap: 8px;
+  font-size: 0.95rem;
+  color: #cbd5e1;
+  margin-bottom: 12px;
+}
+
+.mission-block input,
+.mission-block select {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #e2e8f0;
+  padding: 12px 14px;
+}
+
+.mission-block input::placeholder,
+.mission-block select {
+  color: #e2e8f0;
+}
+
+.mission-block select {
+  appearance: none;
+}
+
+.secondary-button {
+  width: auto;
+  min-height: 40px;
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  color: #e2e8f0;
+  cursor: pointer;
+}
+
+.mission-block#coordinateForm {
+  border-color: rgba(31, 180, 255, 0.22);
+  background: rgba(13, 42, 65, 0.92);
+}
+
+.coordinate-form-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.coordinate-form-header h2 {
+  margin: 0;
+}
+
+.mission-waypoint-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #2d6bff, #1fb4ff);
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  height: 100%;
+}
+
+.marker-number {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 14px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.mission-waypoint-marker:hover {
+  filter: brightness(1.2);
+}
+
+@media (max-width: 1024px) {
+  .planner-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .planner-body {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+}
+
+.mission-item-buttons {
+  display: flex;
+  gap: 6px;
+}
+
+.mission-item .remove-btn {
+  background: rgba(255, 70, 70, 0.18);
+  padding: 6px 10px;
+  font-size: 0.85rem;
+}
+
+.mission-item .remove-btn:hover {
+  background: rgba(255, 70, 70, 0.28);
+}

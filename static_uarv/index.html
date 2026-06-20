@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UARV Admin Panel</title>
+    <link rel="icon" type="image/png" href="logo.png" />
+    <link rel="stylesheet" href="stylesheet.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+  </head>
+  <body>
+    <div class="app-shell">
+      <div class="main-grid">
+        <section class="panel" id="camera-panel">
+        <div class="panel-header">
+          <img class="header-logo" src="logo.png" alt="UARV Logo" />
+          <div>
+            <h1>Live Camera</h1>
+              <p>Streaming from live from the Plane</p>
+            </div>
+            <span id="camera-status">Loading…</span>
+          </div>
+          <div class="camera-frame">
+            <img id="cameraVideo" alt="Live camera stream" />
+            <div class="panel-overlay hidden" id="cameraOverlay">
+              Unable to load the camera stream.
+            </div>
+          </div>
+          <div class="info-strip">
+            <div class="info-card">
+              <strong>Stream URL</strong>
+              <span id="cameraUrl">—</span>
+            </div>
+            <div class="info-card">
+              <strong>Status</strong>
+              <span id="cameraState">Connecting</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="map-panel">
+          <div class="panel-header">
+            <div>
+              <h1>Interactive Map</h1>
+              <p>Centered on GPS coordinates from the Plane</p>
+            </div>
+            <span id="map-status">Loading…</span>
+          </div>
+          <div class="map-panel-body">
+            <div id="map"></div>
+            <div class="panel-overlay hidden" id="mapOverlay">
+              Unable to load GPS coordinates.
+            </div>
+          </div>
+          <div class="info-strip">
+            <div class="info-card">
+              <strong>Latitude</strong>
+              <span id="latitudeValue">—</span>
+            </div>
+            <div class="info-card">
+              <strong>Longitude</strong>
+              <span id="longitudeValue">—</span>
+            </div>
+            <div class="info-card">
+              <strong>Last updated</strong>
+              <span id="gpsUpdated">—</span>
+            </div>
+            <div class="info-card-btn-group">
+              <button id="telemetryBtn" class="refresh-btn" type="button">Telemetry</button>
+              <button id="refreshLocationBtn" class="refresh-btn" type="button">Update</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel panel-actions">
+          <div class="panel-header">
+            <div>
+              <h1>Controls</h1>
+              <p>Note that ARM will start the Motor, and Mode AUTO starts the Mission!</p>
+            </div>
+          </div>
+          <div class="actions-grid">
+            <button class="action-btn" id="armDisarmBtn">
+              <span class="btn-main-text">Arm / Disarm</span>
+              <span class="btn-sub-text">Status: —</span>
+            </button>
+            <button class="action-btn">Mode Selection</button>
+            <button class="action-btn">TAKEOFF</button>
+            <button class="action-btn">ABORT</button>
+          </div>
+        </section>
+        <section class="panel panel-actions">
+          <div class="panel-header">
+            <div>
+              <h1>Mission Planner</h1>
+              <p>Open the mission planner interface</p>
+            </div>
+          </div>
+          <div class="actions-grid">
+            <a class="action-btn mission-link" href="mission_planner.html">
+              <span class="btn-main-text">Open Mission Planner</span>
+            </a>
+            <button class="action-btn" id="downloadMissionBtn">
+              <span class="btn-main-text">Mission Order</span>
+              <span class="btn-sub-text">Download current mission</span>
+            </button>
+          </div>
+        </section>
+      </div>
+    </div>
+    <!-- ── Telemetry floating window ──────────────────────── -->
+    <div id="telemetryWindow" class="drag-window hidden">
+      <div class="drag-header" data-drag-handle>
+        <strong>Telemetry Data</strong>
+        <button class="drag-close-btn" data-close-btn type="button">&times;</button>
+      </div>
+      <div id="telemetryContent" class="drag-content"></div>
+    </div>
+
+    <!-- ── Mission Order floating window ─────────────────── -->
+    <div id="missionWindow" class="drag-window hidden">
+      <div class="drag-header" data-drag-handle>
+        <strong>Mission Order</strong>
+        <button class="drag-close-btn" data-close-btn type="button">&times;</button>
+      </div>
+      <div id="missionContent" class="drag-content"></div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="config.js"></script>
+    <script src="camera.js"></script>
+    <script src="map.js"></script>
+    <script src="buttons.js"></script>
+  </body>
+</html>
